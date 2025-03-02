@@ -1,0 +1,42 @@
+<form action="/scholarship/apply/{scholarshipId}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" required>
+    <button type="submit">Submit</button>
+</form>
+
+<input type="hidden" th:name="scholarshipId" th:value="${scholarship.id}">
+
+<!-- Step 1: Personal Information -->
+<div id="step1">
+    <h5>Personal Information</h5>
+    <div class="mb-3">
+        <label>Full Name</label>
+        <input type="text" class="form-control" th:field="*{fullName}" required>
+    </div>
+
+    <button type="button" class="btn btn-primary" onclick="nextStep(2)">Next</button>
+</div>
+
+<!-- Step 2: Academic Information -->
+<div id="step2" class="hidden">
+    <h5>Academic Information</h5>
+    <div class="mb-3">
+        <label>Education Level</label>
+        <input type="text" class="form-control" th:field="*{educationLevel}" required>
+    </div>
+    
+    <button type="button" class="btn btn-secondary" onclick="prevStep(1)">Previous</button>
+    <button type="button" class="btn btn-primary" onclick="nextStep(3)">Next</button>
+</div>
+
+<!-- Step 3: Other Details -->
+<div id="step3" class="hidden">
+    <h5>Other Details</h5>
+   
+    <div class="mb-3">
+        <label>Upload Documents</label>
+        <input type="file" class="form-control" th:field="*{documentPath}">
+    </div>
+    <button type="button" class="btn btn-secondary" onclick="prevStep(2)">Previous</button>
+    <button type="submit" class="btn btn-success">Submit</button>
+</div>
+</form>
