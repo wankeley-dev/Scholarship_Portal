@@ -124,6 +124,29 @@
                 min-width: 120px;
             }
         }
+
+        /* Print-specific styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            .success-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                padding: 1rem;
+            }
+            .btn-custom, footer {
+                display: none;
+            }
+            .applicant-info {
+                background: white;
+                box-shadow: none;
+            }
+            .success-icon {
+                color: black;
+            }
+        }
     </style>
 </head>
 <body>
@@ -155,9 +178,10 @@
             <p><i class="fas fa-pen"></i><strong>Essay:</strong> <span th:text="${applicants.essay}">This is my essay about why I deserve this scholarship.</span></p>
         </div>
 
-        <!-- Back to Dashboard Button -->
+        <!-- Buttons -->
         <div class="mt-4 animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
             <a href="/dashboard" class="btn btn-custom"><i class="fas fa-home me-2"></i>Back to Dashboard</a>
+            <button onclick="window.print()" class="btn btn-custom"><i class="fas fa-print me-2"></i>Print Application</button>
         </div>
     </div>
 </div>

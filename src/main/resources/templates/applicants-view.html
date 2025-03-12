@@ -191,6 +191,34 @@
                 font-size: 0.9rem;
             }
         }
+
+        /* Print-specific styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            .navbar, .search-card, footer, .btn-custom, .btn-secondary-custom, .btn-danger-custom {
+                display: none;
+            }
+            .applicant-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                padding: 1rem;
+                margin-bottom: 10px;
+            }
+            .applicant-details {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .detail-item {
+                flex: 1 1 100%;
+            }
+            .badge {
+                background: black;
+                color: white;
+            }
+        }
     </style>
 </head>
 <body>
@@ -221,6 +249,7 @@
     <div class="header animate__animated animate__fadeInDown">
         <h2 th:text="'Applicants for ' + ${scholarship.name}"><i class="fas fa-users me-2"></i></h2>
         <p class="text-muted">Review and manage scholarship applications</p>
+        <button onclick="window.print()" class="btn btn-custom"><i class="fas fa-print me-2"></i>Print Applicants</button>
     </div>
 
     <!-- Search Form -->
